@@ -40,4 +40,8 @@ public class Valoracion {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "habitacion_id", nullable = false)
 	private Habitacion habitacion; // Habitacion referente a la valoracion
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "persona_id", nullable = false)
+	private Persona autor; // Persona que ha redactado la valoracion
 }

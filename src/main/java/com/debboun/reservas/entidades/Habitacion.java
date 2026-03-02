@@ -3,7 +3,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -47,10 +49,10 @@ public class Habitacion {
 	@Column(precision = 6, scale = 2) // Permitir solo 6 digitos y 2 decimales
 	private BigDecimal tamano; // Tamaño en metros cuadrados
 	
-	@ToString.Exclude // Excludes para evitar bucles infinitos
-	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy = "habitacion", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<FotoHabitacion> fotos; // Fotos de la habitación
+	@ElementCollection
+	@CollectionTable(name = "habitacion_imagenes", joinColumns = @JoinColumn(name = "habitacion_id"))
+	@Column(name = "url")
+	private List<String> fotos; // Fotos de la habitación
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude

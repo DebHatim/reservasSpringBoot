@@ -43,4 +43,9 @@ public class Persona {
 	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy="persona", cascade = CascadeType.ALL)
 	private List<Reserva> reservas; // Lista de reservas que tiene esta persona
+	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy="autor", cascade = CascadeType.ALL)
+	private List<Valoracion> valoraciones; // Lista de valoraciones que ha hecho esta persona
 }
