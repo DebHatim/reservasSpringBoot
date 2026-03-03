@@ -1,11 +1,9 @@
 package com.debboun.reservas.servicios;
 
-import java.util.Optional;
-
+import com.debboun.reservas.dtos.RegistroDto;
 import com.debboun.reservas.entidades.Hotel;
-import com.debboun.reservas.entidades.Persona;
 
 public interface AnonimoService {
-	Iterable<Hotel> consultarHoteles();
-	Optional<Persona> autenticar(Persona persona);
+	Iterable<Hotel> consultarHoteles(); // Usuario anonimo ve los hoteles
+	void registrarUsuario(RegistroDto registroDto); // Usuario anonimo se registra
 }
