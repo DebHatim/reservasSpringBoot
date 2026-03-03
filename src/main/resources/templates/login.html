@@ -1,8 +1,8 @@
 <html th:replace="~{global :: plantilla(~{::main})}"
 	xmlns:th="https://www.thymeleaf.org">
 <main>
-	<h1>Iniciar sesión</h1>
-	<form th:action="@{/login}" method="post">
+	<h1 class="m-3">Iniciar sesión</h1>
+	<form th:action="@{/login}" method="post" class="m-3">
 		<div class="form-group">
 			<label for="email" class="my-2">Tu correo electrónico</label>
 			<input type="email" class="form-control" name="username" required>

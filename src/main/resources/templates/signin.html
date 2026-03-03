@@ -1,8 +1,8 @@
 <html th:replace="~{global :: plantilla(~{::main})}"
 	xmlns:th="https://www.thymeleaf.org">
 <main>
-	<h1>Registrar usuario</h1>
-	<form th:action="@{/signin}" th:object="${registroDto}" method="post">
+	<h1 class="m-3">Registrar usuario</h1>
+	<form th:action="@{/signin}" th:object="${registroDto}" method="post" class="m-3">
 		<div class="form-group">
 			<label class="my-2">Tu nombre</label>
 			<input type="text" th:field="*{nombre}" class="form-control">
