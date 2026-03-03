@@ -6,7 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -34,10 +36,15 @@ public class Persona {
 	@NotBlank
 	private String nombre; // Nombre obligatorio
 	
-	private String apellido; // Apellido no obligatorio
+	@NotBlank
+	private String apellido; // Apellido obligatorio
 	
 	@NotBlank
 	private String telefono; // Telefono obligatorio para contacto
+	
+	@OneToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
 	
 	@ToString.Exclude // Excludes para evitar bucles infinitos
 	@EqualsAndHashCode.Exclude
