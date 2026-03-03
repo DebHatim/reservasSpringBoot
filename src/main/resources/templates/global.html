@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" th:fragment="plantilla(contenido)"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestor de Reservas</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<style>
+.navbar-nav .nav-link:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+</style>
+<link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-4">
+		<a class="navbar-brand text-white">Gestor de Reservas</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link text-white"
+					th:href="@{/}">Hoteles</a></li>
+				<li class="nav-item"><a class="nav-link text-white"
+					th:href="@{/login}">Iniciar sesión</a></li>
+				<li class="nav-item"><a class="nav-link text-white"
+					th:href="@{/signin}">Registrarse</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container flex-grow-1 mb-5 my-4">
+		<main th:replace="${contenido}"></main>
+	</div>
+	<footer class="bg-dark ps-4 py-3 text-white">&copy;Hatim
+		Debboun 2026</footer>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
