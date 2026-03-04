@@ -22,7 +22,7 @@ public class WebSecurityConfig  {
 		http.authorizeHttpRequests(
 				
 				auth -> auth // Definicion de zona publica, asteriscos dobles en css y js para cubrir subcarpetas
-				.requestMatchers("/", "/signin/**", "/login**", "/css/**", "/js/**", "/favicon.ico").permitAll().anyRequest().authenticated())
+				.requestMatchers("/", "/signin/**", "/login**", "/hotel/**", "/perfil/**", "/css/**", "/js/**", "/favicon.ico").permitAll().anyRequest().authenticated())
 				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/",true).permitAll())
 				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
