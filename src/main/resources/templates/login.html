@@ -11,6 +11,9 @@
 			<label for="password" class="my-2">Contraseña</label>
 			<input type="password" class="form-control" name="password" required>
 		</div>
+		<div th:if="${param.error}" class="text-danger mb-0 mt-2">
+			Email o contraseña incorrectos. Por favor, inténtelo de nuevo.
+		</div>
 		<button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
 	</form>
 </main>
