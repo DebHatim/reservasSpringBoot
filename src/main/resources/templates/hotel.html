@@ -1,0 +1,75 @@
+<html th:replace="~{global :: plantilla(~{::main})}"
+	xmlns:th="https://www.thymeleaf.org">
+<main>
+	<h1 class="m-3" th:text="${hotel.nombre}"></h1>
+	<div class="card p-4 m-3 pb-2 mb-0">
+		<div class="row mb-4">
+			<div class="col-md-4">
+				<p class="card-text font-weight-bold" th:text="${hotel.direccion}"></p>
+				<p class="card-text">
+					<small class="text-muted">0 estrellas</small>
+				</p>
+				<hr>
+				<h5 class="mb-3">Establece tu fecha de llegada y salida</h5>
+				<div class="mb-3">
+					<label class="form-label">Fecha de llegada:</label> <input
+						class="form-control" type="date" id="fechaInicio" name="fechaInicio" required />
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Fecha de salida:</label> <input
+						class="form-control" type="date" id="fechaFin" name="fechaFin" required />
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div id="hotelCarousel" class="carousel slide"
+					data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<div th:each="foto, iterStat : ${hotel.fotos}"
+							class="carousel-item"
+							th:classappend="${iterStat.first} ? 'active'">
+
+							<img th:src="${foto}" class="d-block w-100 fotoshotel rounded"
+								alt="Imagen del hotel">
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" 
+						data-bs-slide="prev" data-bs-target="#hotelCarousel">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					</button>
+					<button class="carousel-control-next" data-bs-target="#hotelCarousel"
+						type="button" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<h5 class="mb-3">Selecciona tu habitación</h5>
+		<div class="row">
+			<div class="col-md-6 mb-3"
+				th:each="habitacion : ${hotel.habitaciones}">
+				<div class="card h-100 shadow-sm">
+					<form th:action="@{/reserva}" method="post" class="reserva-form">
+						<input type="hidden" name="habitacionId" th:value="${habitacion.id}" />
+							<input type="hidden" name="fechaInicio" class="fechaInicioHidden" />
+							<input type="hidden" name="fechaFin" class="fechaFinHidden" />
+						
+						<div class="card-header">
+							Capacidad: <span th:text="${habitacion.capacidad}"></span>
+							personas
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">
+								<span th:text="${habitacion.precio}"></span>€ la noche
+							</h5>
+							<p class="card-text">
+								Tamaño: <span th:text="${habitacion.tamano}"></span> m²
+							</p>
+							<button type="submit" class="btn btn-primary">Reservar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/scripthotel.js}"></script>
+</main>
