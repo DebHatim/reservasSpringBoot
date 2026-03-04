@@ -40,6 +40,8 @@ body {
 					th:href="@{/login}">Iniciar sesión</a></li>
 				<li sec:authorize="!isAuthenticated()" class="nav-item"><a class="nav-link text-white"
 					th:href="@{/signin}">Registrarse</a></li>
+				<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link text-white"
+					th:href="@{/perfil}">Perfil</a></li>
 				<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link text-white"
 					th:href="@{/admin}">Panel Admin</a></li>
 				
