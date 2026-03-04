@@ -11,6 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,12 +35,15 @@ public class Persona {
 	private Long id; // Identificador
 	
 	@NotBlank
+	@Size(min=3)
 	private String nombre; // Nombre obligatorio
 	
 	@NotBlank
+	@Size(min=3)
 	private String apellido; // Apellido obligatorio
 	
 	@NotBlank
+	@Size(min=9)
 	private String telefono; // Telefono obligatorio para contacto
 	
 	@OneToOne
