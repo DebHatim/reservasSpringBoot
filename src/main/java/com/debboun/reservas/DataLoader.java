@@ -12,10 +12,12 @@ import com.debboun.reservas.entidades.Habitacion;
 import com.debboun.reservas.entidades.Hotel;
 import com.debboun.reservas.entidades.Persona;
 import com.debboun.reservas.entidades.Usuario;
+import com.debboun.reservas.entidades.Valoracion;
 import com.debboun.reservas.repositorios.HabitacionRepository;
 import com.debboun.reservas.repositorios.HotelRepository;
 import com.debboun.reservas.repositorios.PersonaRepository;
 import com.debboun.reservas.repositorios.UsuarioRepository;
+import com.debboun.reservas.repositorios.ValoracionRepository;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -31,6 +33,9 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private ValoracionRepository valoracionRepository;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -58,15 +63,22 @@ public class DataLoader implements CommandLineRunner {
 		// Creacion de las habitaciones para los hoteles
 		Habitacion habitacion1 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.0)).hotel(hotel1).build();
 		Habitacion habitacion2 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.00)).hotel(hotel1).build();
-		Habitacion habitacion3 = Habitacion.builder().capacidad(3).precio(new BigDecimal(18.00)).tamano(new BigDecimal(14.00)).hotel(hotel2).build();
+		Habitacion habitacion3 = Habitacion.builder().capacidad(3).precio(new BigDecimal(18.00)).tamano(new BigDecimal(14.00)).hotel(hotel1).build();
 		Habitacion habitacion4 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.00)).hotel(hotel2).build();
+		Habitacion habitacion5 = Habitacion.builder().capacidad(4).precio(new BigDecimal(24.00)).tamano(new BigDecimal(19.00)).hotel(hotel2).build();
+		Habitacion habitacion6 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.00)).hotel(hotel2).build();
 
-		habitacionRepository.saveAll(List.of(habitacion1, habitacion2, habitacion3, habitacion4));
+		habitacionRepository.saveAll(List.of(habitacion1, habitacion2, habitacion3, habitacion4, habitacion5, habitacion6));
 		
 		// Creacion del usuario admin
 		Usuario admin = usuarioRepository.save(Usuario.builder().email("admin@gmail.com").password(passwordEncoder.encode("admin1234")).rol("ROLE_ADMIN").build());
 		personaRepository.save(Persona.builder().nombre("ADMIN").apellido("Sistema").telefono("000000000").usuario(admin).build());
 	
+		Usuario pedro = usuarioRepository.save(Usuario.builder().email("pedro@gmail.com")
+				.password(passwordEncoder.encode("admin1234")).rol("ROLE_USER").build());
+		Persona personapedro = personaRepository.save(Persona.builder().nombre("Pedro").apellido("Ejemplo").telefono("000000001").usuario(pedro).build());
+		
+		valoracionRepository.save(Valoracion.builder().estrellas(5).habitacion(habitacion1).autor(personapedro).build());
 	}
 
 }
