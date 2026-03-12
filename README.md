@@ -3,7 +3,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8-orange)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-# 🏨 Sistema de Reservas de Hotel - reservasSpringBoot - 87% completado
+# 🏨 Sistema de Reservas de Hotel - reservasSpringBoot - 94% completado
 
 Repositorio de un sistema web para la gestión de reservas de hoteles, desarrollado con **Spring Boot**, siguiendo el patrón de diseño **MVC** (Modelo-Vista-Controlador), **Thymeleaf** para el front-end y **MySQL** como persistencia de datos.
 
