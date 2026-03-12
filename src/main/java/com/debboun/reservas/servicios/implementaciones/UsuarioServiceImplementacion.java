@@ -35,5 +35,10 @@ public class UsuarioServiceImplementacion implements UsuarioService {
 				.habitacion(habitacion).persona(usuario.getPersona()).build());
 		
 	}
+
+	@Override
+	public Usuario obtenerUsuario(String email) {
+		return usuarioRepository.findByEmail(email).get();
+	}
 	
 }
