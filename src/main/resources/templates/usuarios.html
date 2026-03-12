@@ -1,0 +1,31 @@
+<html th:replace="~{global :: plantilla(~{::main})}"
+	xmlns:th="https://www.thymeleaf.org">
+<main>
+	<a class="m-3 mb-4 h4 text-decoration-none text-primary" th:href="@{/admin}"><-- Volver</a>
+	<h1 class="m-3 mb-4">Listado de usuarios</h1>
+	<table class="table m-3">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Correo</th>
+				<th scope="col">Rol</th>
+				<th scope="col">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="usuario : ${usuarios}">
+				<th scope="row" th:text="${usuario.id}"></th>
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.email}"></td>
+				<td th:text="${usuario.rol}"></td>
+				<td>
+					<a th:href="@{/admin/usuarios/editar/{id}(id=${usuario.id})}" class="btn btn-primary">Editar</a>
+					<form th:if="${usuario.rol == 'ROLE_USER'}" method="POST" th:action="@{/admin/usuarios/eliminar/{id}(id=${usuario.id})}" class="d-inline">
+						<button type="submit" class="btn btn-danger">Eliminar</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</main>

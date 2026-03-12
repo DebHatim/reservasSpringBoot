@@ -1,0 +1,49 @@
+<html th:replace="~{global :: plantilla(~{::main})}"
+	xmlns:th="https://www.thymeleaf.org">
+<main>
+	<a class="m-3 mb-4 h4 text-decoration-none text-primary"
+		th:href="@{/admin/usuarios}"><-- Volver al listado de usuarios</a>
+	<h1 class="m-3 mb-4">
+		Editar usuario <span th:text="${usuario.nombre}"></span>
+	</h1>
+	<form th:action="@{/admin/usuarios/editar/{id}(id=${usuario.id})}"
+		th:object="${usuario}" method="post" class="m-3">
+
+		<div class="row">
+			<div class="col">
+				<label class="my-2">Nombre</label> <input type="text"
+					th:field="*{nombre}" class="form-control" required>
+				<div class="text-danger" th:if="${#fields.hasErrors('nombre')}"
+					th:errors="*{nombre}"></div>
+			</div>
+			<div class="col">
+				<label class="my-2">Primer apellido</label> <input type="text"
+					th:field="*{apellido}" class="form-control" required>
+				<div class="text-danger" th:if="${#fields.hasErrors('apellido')}"
+					th:errors="*{apellido}"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label class="my-2">Número de teléfono</label> <input type="text"
+					th:field="*{telefono}" class="form-control" required>
+				<div class="text-danger" th:if="${#fields.hasErrors('*{telefono}')}"
+					th:errors="*{telefono}"></div>
+			</div>
+			<div class="col">
+				<label class="my-2">Correo electrónico</label> <input type="email"
+					th:field="*{email}" class="form-control" required>
+				<div class="text-danger" th:if="${#fields.hasErrors('email')}"
+					th:errors="*{email}"></div>
+			</div>
+		</div>
+		<div th:if="${msg}" class="form-group">
+			<p th:text="${msg}" class="mt-2 mb-0 text-success"></p>
+		</div>
+		<div th:if="${error}" class="form-group">
+			<p th:text="${error}" class="mt-2 mb-0 text-danger"></p>
+		</div>
+		<button type="submit" class="btn btn-primary mt-3">Guardar
+			cambios</button>
+	</form>
+</main>
