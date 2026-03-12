@@ -52,7 +52,7 @@ public class Persona {
 	
 	@ToString.Exclude // Excludes para evitar bucles infinitos
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy="persona", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="persona", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Reserva> reservas; // Lista de reservas que tiene esta persona
 	
 	@ToString.Exclude

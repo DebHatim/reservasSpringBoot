@@ -1,5 +1,6 @@
 package com.debboun.reservas.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,6 +42,6 @@ public class Usuario {
 	@NotNull
 	private String rol; // ROLE_USER o ROLE_ADMIN
 
-	@OneToOne(mappedBy = "usuario")
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Persona persona;
 }
