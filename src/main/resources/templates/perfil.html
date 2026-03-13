@@ -41,6 +41,8 @@
 	</div>
 	<div class="card-body">
 		<h3 class="m-3 mt-4">Reservas</h3>
+		<p th:if="${usuario.persona.reservas.size() == 0}" class="m-3 mt-4">No
+			tienes ninguna habitación reservada.</p>
 		<div class="row m-2">
 			<div class="card w-25 m-2 p-0"
 				th:each="reserva : ${usuario.persona.reservas}">
@@ -48,12 +50,26 @@
 					Reserva del <span th:text="${reserva.habitacion.hotel.nombre}"></span>
 				</div>
 				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Capacidad: <span
+						th:text="${reserva.habitacion.capacidad}"></span></li>
 					<li class="list-group-item">Fecha Llegada: <span
 						th:text="${reserva.fechaInicio}"></span></li>
 					<li class="list-group-item">Fecha Salida: <span
 						th:text="${reserva.fechaFin}"></span></li>
-					<li class="list-group-item">Precio: <span
-						th:text="${reserva.habitacion.precio}"></span></li>
+					<li class="list-group-item">
+						<div class="row g-0 align-items-center">
+							<div class="col-5">
+								Precio: <span th:text="${reserva.habitacion.precio}"></span>€
+							</div>
+							<div class="col-7 text-end">
+								<form th:action="@{/reserva/eliminar/{id}(id=${reserva.id})}"
+									method="POST" class="m-0">
+									<button type="submit" class="btn btn-danger">Eliminar
+										reserva</button>
+								</form>
+							</div>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
