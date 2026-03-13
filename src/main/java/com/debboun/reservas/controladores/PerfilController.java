@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.debboun.reservas.servicios.implementaciones.UsuarioServiceImplementacion;
+import com.debboun.reservas.servicios.UsuarioService;
 
 import lombok.AllArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @Controller
 public class PerfilController {
 	
-	private final UsuarioServiceImplementacion usuarioService;
+	private final UsuarioService usuarioService;
 	
 	@GetMapping("/perfil")
 	public String mostrar(Principal principal, Model modelo) {

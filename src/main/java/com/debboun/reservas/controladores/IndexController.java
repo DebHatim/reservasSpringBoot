@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.debboun.reservas.servicios.implementaciones.AnonimoServiceImplementacion;
+import com.debboun.reservas.servicios.AnonimoService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/")	 // Ruta raiz
 public class IndexController {
 	
-	private final AnonimoServiceImplementacion anonimoService;
+	private final AnonimoService anonimoService;
 	
 	@GetMapping
 	public String index(Model modelo) {

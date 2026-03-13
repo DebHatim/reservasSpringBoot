@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.debboun.reservas.dtos.EditarUsuarioDto;
-import com.debboun.reservas.servicios.implementaciones.AdminServiceImplementacion;
+import com.debboun.reservas.servicios.AdminService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/admin") // Ruta raiz
 public class AdminController {
 
-	private final AdminServiceImplementacion adminService;
+	private final AdminService adminService;
 
 	@GetMapping({"","/"})
 	public String mostrar() {

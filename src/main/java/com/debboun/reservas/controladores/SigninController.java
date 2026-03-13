@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.debboun.reservas.dtos.RegistroDto;
-import com.debboun.reservas.servicios.implementaciones.AnonimoServiceImplementacion;
+import com.debboun.reservas.servicios.AnonimoService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Controller // Marcar como controller para que Spring lo detecte
 public class SigninController {
 
-	private final AnonimoServiceImplementacion anonimoService;
+	private final AnonimoService anonimoService;
 
 	@GetMapping("/signin") // Acceder por /signin
 	public String index(Model modelo) {
