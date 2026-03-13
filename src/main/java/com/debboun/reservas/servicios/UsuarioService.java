@@ -6,4 +6,5 @@ import com.debboun.reservas.entidades.Usuario;
 public interface UsuarioService {
 	Usuario obtenerUsuario(String email);
 	void reservar(ReservaDto reservaDto, String email);
+	void eliminarReserva(Long id);
 }

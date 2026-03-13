@@ -21,7 +21,7 @@ public class UsuarioServiceImplementacion implements UsuarioService {
 	private final ReservaRepository reservaRepository;
 	private final HabitacionRepository habitacionRepository;
 	private final UsuarioRepository usuarioRepository;
-	
+		
 	@Override
 	public void reservar(ReservaDto reservaDto, String email) {
 		Usuario usuario = usuarioRepository.findByEmail(email)
@@ -33,7 +33,11 @@ public class UsuarioServiceImplementacion implements UsuarioService {
 		reservaRepository.save(Reserva.builder().fechaInicio(reservaDto
 				.fechaInicio()).fechaFin(reservaDto.fechaFin())
 				.habitacion(habitacion).persona(usuario.getPersona()).build());
-		
+	}
+	
+	@Override
+	public void eliminarReserva(Long id) {
+		reservaRepository.deleteById(id);
 	}
 
 	@Override
