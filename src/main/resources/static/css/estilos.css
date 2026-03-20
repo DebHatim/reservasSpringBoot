@@ -39,3 +39,8 @@
 	height: 300px;
 	object-fit: cover;
 }
+
+.fotomin {
+	width: 150px;
+	height: 100px;
+}

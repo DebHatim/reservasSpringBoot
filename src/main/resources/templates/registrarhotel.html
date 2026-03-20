@@ -1,0 +1,21 @@
+<html th:replace="~{global :: plantilla(~{::main})}"
+	xmlns:th="https://www.thymeleaf.org">
+<main>
+	<a class="m-3 mb-4 h4 text-decoration-none text-primary" th:href="@{/admin}"><-- Volver</a>
+	<h1 class="m-3">Registrar hotel</h1>
+	<form th:action="@{/admin/hoteles/crear}" th:object="${hotelDto}" method="post" class="m-3">
+		<div class="form-group">
+			<label class="my-2">Introduce el nombre del hotel</label>
+			<input type="text" class="form-control" th:field="*{nombre}" required>
+		</div>
+		<div class="form-group">
+			<label class="my-2">Escribe la direccion del hotel</label>
+			<input type="text" class="form-control" th:field="*{direccion}" required>
+		</div>
+		<div class="form-group">
+			<label class="my-2">Escribe la imagen del hotel(url)</label>
+			<input type="text" class="form-control" th:field="*{url}" required>
+		</div>
+		<button type="submit" class="btn btn-primary mt-3">Registrar</button>
+	</form>
+</main>
