@@ -6,7 +6,10 @@ import java.util.stream.StreamSupport;
 import org.springframework.stereotype.Service;
 
 import com.debboun.reservas.dtos.EditarUsuarioDto;
+import com.debboun.reservas.dtos.RegistrarHotelDto;
 import com.debboun.reservas.dtos.UsuarioListaDto;
+import com.debboun.reservas.entidades.Hotel;
+import com.debboun.reservas.repositorios.HotelRepository;
 import com.debboun.reservas.repositorios.UsuarioRepository;
 import com.debboun.reservas.servicios.AdminService;
 
@@ -19,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class AdminServiceImplementacion implements AdminService {
 
 	private final UsuarioRepository usuarioRepository;
+	private final HotelRepository hotelRepository;
 	
 	@Override
 	public List<UsuarioListaDto> listarUsuarios() {
@@ -45,12 +49,38 @@ public class AdminServiceImplementacion implements AdminService {
 	}
 
 	@Override
+	public List<Hotel> listarHoteles() {
+		return (List<Hotel>) hotelRepository.findAll();
+	}
+	
+
+	@Override
+	public void registrarHotel(RegistrarHotelDto registrarHotelDto) {
+		hotelRepository.save(
+				Hotel.builder()
+				.nombre(registrarHotelDto.nombre())
+				.direccion(registrarHotelDto.direccion())
+				.fotos(List.of(registrarHotelDto.url()))
+				.build());
+	}
+	
+	@Override
 	@Transactional
 	public void eliminarUsuario(Long id) {
 		try {
 	        usuarioRepository.deleteById(id);
 	    } catch (Exception e) {
 	        System.out.println("ERROR AL ELIMINAR: Probablemente el usuario tiene reservas vinculadas.");
+	        e.printStackTrace();
+	    }
+	}
+
+	@Override
+	@Transactional
+	public void eliminarHotel(Long id) {
+		try {
+	        hotelRepository.deleteById(id);
+	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
 	}
