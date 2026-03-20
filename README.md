@@ -1,35 +1,27 @@
+# 🏨 Sistema de Reservas de Hotel - Java & Spring Boot
+
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-brightgreen)
 ![MySQL](https://img.shields.io/badge/MySQL-8-orange)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-# 🏨 Sistema de Reservas de Hotel - reservasSpringBoot - 94% completado
+Aplicación Backend robusta desarrollada con **Java 21** y **Spring Boot 3.x**. El proyecto sigue una arquitectura **MVC** limpia, enfocada en la escalabilidad y la seguridad.
 
-Repositorio de un sistema web para la gestión de reservas de hoteles, desarrollado con **Spring Boot**, siguiendo el patrón de diseño **MVC** (Modelo-Vista-Controlador), **Thymeleaf** para el front-end y **MySQL** como persistencia de datos.
+> **Logro destacado:** Calificación de **10/10** en especialización técnica (210h).
 
 > **Nota:** Proyecto desarrollado completamente por **Hatim Debboun** como parte de un portafolio profesional de desarrollo Backend con Java.
 
 ---
 
-## 🧠 Funcionalidades Principales
+## 🚀 Capacidades Técnicas e Implementación
 
-- **Catálogo de Hoteles:** Visualización de hoteles y sus habitaciones disponibles.
+- **Gestión de Datos:** Modelado avanzado con **JPA/Hibernate** (Relaciones @OneToMany, @OneToOne) y optimización de consultas.
 
-- **Gestión de Usuarios:** Registro e inicio de sesión integrados.
+- **Seguridad:** Autenticación y Autorización basada en roles con **Spring Security** y encriptación BCrypt.
 
-- **Reservas:** Sistema que impide reservar habitaciones si ya están ocupadas en las fechas seleccionadas.
+- **Lógica de Negocio:** Algoritmo de validación de disponibilidad para evitar el "double-booking" (reservas duplicadas).
 
-- **Valoraciones:** Sistema de valoraciones y comentarios escritos por los usuarios para cada habitación.
-
-- **Modelo de Datos Robusto:** Implementación de relaciones complejas en JPA:
-
-  - `Usuario` ↔ `Persona`: Relación @OneToOne para gestión de perfiles
-
-  - `Hotel` ↔ `Habitación`: Relación @OneToMany
-
-  - `Habitacion` ↔ `Reserva` ↔ `Persona`: Gestión de estancia y ocupantes
-
-  - `Habitacion` ↔ `Valoracion`: Histórico de feedback de clientes
+- **Arquitectura Limpia:** Implementación de **DTOs** para separar la persistencia de la vista y **Bean Validation** para integridad de datos.
 
 ---
 
@@ -55,17 +47,13 @@ Repositorio de un sistema web para la gestión de reservas de hoteles, desarroll
 
 ## 🔐 Seguridad
 
-- Autenticación con Spring Security, personalizado en UserDetailsService
-
-- Encriptación de contraseñas con BCrypt usando BCryptPasswordEncoder
-
-- Control de acceso por roles (ROLE_USER / ROLE_ADMIN)
-
-- Protección CSRF y defensa contra ataques SQL injection
+- **Control de Acceso:** Diferenciación de permisos para `ROLE_USER` y `ROLE_ADMIN`.
+- **Protección:** Configuración contra ataques CSRF y SQL Injection.
+- **Manejo de contraseñas:** Hashing con `BCryptPasswordEncoder`.
 
 ---
 
-## 🚀 Configuración y Ejecución
+## ⚙️ Configuración y Ejecución
 
 - Requisitos Previos: Java 21, Maven 3.x., Servidor MySQL.
 
