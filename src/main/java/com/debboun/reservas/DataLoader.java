@@ -78,7 +78,7 @@ public class DataLoader implements CommandLineRunner {
 				.password(passwordEncoder.encode("pedro1234")).rol("ROLE_USER").build());
 		Persona personapedro = personaRepository.save(Persona.builder().nombre("Pedro").apellido("Ejemplo").telefono("000000001").usuario(pedro).build());
 		
-		valoracionRepository.save(Valoracion.builder().estrellas(5).habitacion(habitacion1).autor(personapedro).build());
+		valoracionRepository.save(Valoracion.builder().estrellas(4).comentario("Cómodo, lo recomiendo").hotel(hotel1).autor(personapedro).build());
 	}
 
 }
