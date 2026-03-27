@@ -42,7 +42,7 @@ public class Hotel {
 	@NotEmpty
 	private String direccion; // Direccion del hotel
 	
-	private int puntuacion; // Puntuación en 5 estrellas del hotel
+	private double puntuacion; // Puntuación en 5 estrellas del hotel
 	
 	@ElementCollection
 	@CollectionTable(name = "hotel_imagenes", joinColumns = @JoinColumn(name = "hotel_id"))
@@ -54,4 +54,15 @@ public class Hotel {
 	@OneToMany(mappedBy="hotel", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Habitacion> habitaciones; // Lista de habitaciones que tiene el hotel
 	
+	@ToString.Exclude // Excludes para evitar bucles infinitos
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy="hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Valoracion> valoraciones; // Reseñas que tiene el hotel
+	
+	public double getMediaPuntuacion() { // Método para devolver la media de la puntuacion del hotel
+		if (valoraciones == null || valoraciones.isEmpty()) {
+			return 0.0; // SI no hay reseñas, dejar en 0
+		}
+		return valoraciones.stream().mapToInt(Valoracion::getEstrellas).average().orElse(0.0);
+	}
 }
