@@ -3,21 +3,26 @@
 <main>
 	<h1 class="m-3" th:text="${hotel.nombre}"></h1>
 	<div class="card p-4 m-3 pb-2 mb-0">
-		<div class="row mb-4">
+		<div class="row mb-2">
 			<div class="col-md-4">
-				<p class="card-text font-weight-bold" th:text="${hotel.direccion}"></p>
+				<p class="card-text fw-bold" th:text="${hotel.direccion}"></p>
 				<p class="card-text">
-					<small class="text-muted">0 estrellas</small>
+					<small class="text-muted">
+						<i class="bi bi-star-fill text-warning"></i>
+        				<span th:text="${hotel.puntuacion > 0} ? ${#numbers.formatDecimal(hotel.puntuacion, 1, 1) + ' estrellas'} : 'Sin puntuación'"></span>
+					</small>
 				</p>
 				<hr>
 				<h5 class="mb-3">Establece tu fecha de llegada y salida</h5>
 				<div class="mb-3">
 					<label class="form-label">Fecha de llegada:</label> <input
-						class="form-control" type="date" id="fechaInicio" name="fechaInicio" required />
+						class="form-control" type="date" id="fechaInicio"
+						name="fechaInicio" required />
 				</div>
 				<div class="mb-3">
 					<label class="form-label">Fecha de salida:</label> <input
-						class="form-control" type="date" id="fechaFin" name="fechaFin" required />
+						class="form-control" type="date" id="fechaFin" name="fechaFin"
+						required />
 				</div>
 			</div>
 			<div class="col-md-8">
@@ -32,27 +37,45 @@
 								alt="Imagen del hotel">
 						</div>
 					</div>
-					<button class="carousel-control-prev" type="button" 
+					<button class="carousel-control-prev" type="button"
 						data-bs-slide="prev" data-bs-target="#hotelCarousel">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					</button>
-					<button class="carousel-control-next" data-bs-target="#hotelCarousel"
-						type="button" data-bs-slide="next">
+					<button class="carousel-control-next"
+						data-bs-target="#hotelCarousel" type="button" data-bs-slide="next">
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					</button>
 				</div>
 			</div>
 		</div>
+		<h5 class="mb-3">Reseñas</h5>
+		<h4 class="mb-0 fw-normal" th:if="${#lists.isEmpty(hotel.valoraciones)}">Este hotel aún no tiene reseñas.</h4>
+		<div class="row">
+			<div class="col-md-6 mb-3" th:each="valoracion : ${hotel.valoraciones}">
+				<div class="card h-100 shadow-sm">
+					<div class="card-body">
+						<h4 class="text-center card-title mb-2 text-info" th:text="${#strings.isEmpty(valoracion.comentario)} ? 'Sin comentario' :
+						${valoracion.comentario}"></h4>
+						<h6 class="text-center card-title mb-1">Valoración de <span th:text="${valoracion.autor.nombre}"></span></h6>
+						<div class="text-center text-warning">
+							<i th:each="i : ${#numbers.sequence(1, 5)}" th:class="${i <= valoracion.estrellas} ? 'bi bi-star-fill' : 'bi bi-star'"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
 		<h5 class="mb-3">Selecciona tu habitación</h5>
 		<div class="row">
 			<div class="col-md-6 mb-3"
 				th:each="habitacion : ${hotel.habitaciones}">
 				<div class="card h-100 shadow-sm">
-					<form th:action="@{/reserva}" method="post" class="reserva-form">
-						<input type="hidden" name="habitacionId" th:value="${habitacion.id}" />
-							<input type="hidden" name="fechaInicio" class="fechaInicioHidden" />
-							<input type="hidden" name="fechaFin" class="fechaFinHidden" />
-						
+					<form th:action="@{/reserva}" method="post" class="reserva-form mb-1">
+						<input type="hidden" name="habitacionId"
+							th:value="${habitacion.id}" /> <input type="hidden"
+							name="fechaInicio" class="fechaInicioHidden" /> <input
+							type="hidden" name="fechaFin" class="fechaFinHidden" />
+
 						<div class="card-header">
 							Capacidad: <span th:text="${habitacion.capacidad}"></span>
 							personas
