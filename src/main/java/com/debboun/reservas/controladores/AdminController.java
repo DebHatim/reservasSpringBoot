@@ -35,7 +35,7 @@ public class AdminController {
 	@GetMapping({"/hoteles","/hoteles/"})
 	public String listarHoteles(Model modelo) {
 		modelo.addAttribute("hoteles", adminService.listarHoteles());
-		return "hoteles";
+		return "adminhoteles";
 	}
 	
 	@GetMapping({"/hoteles/crear","/hoteles/crear/"})
