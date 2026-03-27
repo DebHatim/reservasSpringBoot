@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.debboun.reservas.entidades.Hotel;
+import com.debboun.reservas.dtos.MostrarHotelDto;
 import com.debboun.reservas.servicios.HotelService;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class HotelController {
 
 	@GetMapping("/hotel/{id}")
 	public String verHotel(@PathVariable Long id, Model modelo) {
-		Hotel hotel = hotelService.buscarPorId(id);
+		MostrarHotelDto hotel = hotelService.buscarPorId(id);
 		if (hotel == null) {
 			return "redirect:/";
 		}

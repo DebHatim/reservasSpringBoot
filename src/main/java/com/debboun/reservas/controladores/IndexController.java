@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.debboun.reservas.servicios.AnonimoService;
+import com.debboun.reservas.servicios.HotelService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,11 +14,11 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/")	 // Ruta raiz
 public class IndexController {
 	
-	private final AnonimoService anonimoService;
+	private final HotelService hotelService;
 	
 	@GetMapping
 	public String index(Model modelo) {
-		modelo.addAttribute("hoteles", anonimoService.consultarHoteles());
+		modelo.addAttribute("hoteles", hotelService.listarHoteles());
 		return "index";
 	}
 
