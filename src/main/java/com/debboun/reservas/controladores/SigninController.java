@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.debboun.reservas.dtos.RegistroDto;
-import com.debboun.reservas.servicios.AnonimoService;
+import com.debboun.reservas.servicios.UsuarioService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @Controller // Marcar como controller para que Spring lo detecte
 public class SigninController {
 
-	private final AnonimoService anonimoService;
+	private final UsuarioService usuarioService;
 
 	@GetMapping("/signin") // Acceder por /signin
 	public String index(Model modelo) {
@@ -37,7 +37,7 @@ public class SigninController {
 		}
 		
 		try {
-			anonimoService.registrarUsuario(registroDto);
+			usuarioService.registrarUsuario(registroDto);
 			modelo.addAttribute("registroDto", new RegistroDto("", "", "", "", "", ""));
 			modelo.addAttribute("msg", "Usuario registrado correctamente.");
 			return "signin"; // volver a mostrar la vista si todo fue bien
