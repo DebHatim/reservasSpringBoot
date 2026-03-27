@@ -7,11 +7,11 @@
 			<h5 class="card-title estiloHotel" th:text="${hotel.nombre}"></h5>
 			<p class="card-text estiloHotel mb-3" th:text="${hotel.direccion}"></p>
 			<p class="card-text estiloHotel mb-1">
-				<small class="text-muted">0 estrellas</small>
+				<small class="text-muted"><span th:text="${hotel.puntuacion}"></span> estrellas</small>
 			</p>
 			<a th:href="@{/hotel/{id}(id=${hotel.id})}" class="stretched-link"></a>
 		</div>
-		<img th:src="${hotel.fotos[0]}" class="card-img-bottom fotohotel" alt="Imagen del hotel">
+		<img th:src="${hotel.fotoPrincipal}" class="card-img-bottom fotohotel" alt="Imagen del hotel">
 	
 	</div>
 </main>
