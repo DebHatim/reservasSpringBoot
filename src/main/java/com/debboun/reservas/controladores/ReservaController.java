@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor // Crear un constructor para todos los final
 @Controller
-@RequestMapping("/reserva")
+@RequestMapping("/reserva")  // Clase para controlar las reservas de las habitaciones
 public class ReservaController {
 	
 	private final UsuarioService usuarioService;

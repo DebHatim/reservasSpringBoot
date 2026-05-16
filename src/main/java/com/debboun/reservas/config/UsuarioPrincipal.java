@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.debboun.reservas.entidades.Usuario;
 
-public class UsuarioPrincipal implements UserDetails {
+public class UsuarioPrincipal implements UserDetails { // 
 	
 	private static final long serialVersionUID = 1L;
 	private final Usuario usuario;
@@ -21,11 +21,11 @@ public class UsuarioPrincipal implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(usuario.getRol())); // convierte el rol a string que Spring Security entiende
+		return List.of(new SimpleGrantedAuthority(usuario.getRol())); // Convierte el rol a string que Spring Security entiende
 	}
 
 	@Override
-	public @Nullable String getPassword() { // metodo para sacar la contraseña
+	public @Nullable String getPassword() { // Método para sacar la contraseña
 		return usuario.getPassword();
 	}
 
@@ -35,7 +35,7 @@ public class UsuarioPrincipal implements UserDetails {
 	}
 	
 	@Override
-	public boolean isAccountNonExpired() {return true;}
+	public boolean isAccountNonExpired() {return true;} // Métodos de verificacion de seguridad
 	@Override
 	public boolean isAccountNonLocked() {return true;}
 	@Override

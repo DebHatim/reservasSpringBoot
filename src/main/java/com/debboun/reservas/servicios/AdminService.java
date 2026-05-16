@@ -8,6 +8,7 @@ import com.debboun.reservas.dtos.RegistrarHotelDto;
 import com.debboun.reservas.dtos.UsuarioListaDto;
 import com.debboun.reservas.entidades.Hotel;
 
+// Servicio listando todo lo que puede hacer un administrador del sistema
 public interface AdminService {
 	List<UsuarioListaDto> listarUsuarios();
 	List<Hotel> listarHoteles();

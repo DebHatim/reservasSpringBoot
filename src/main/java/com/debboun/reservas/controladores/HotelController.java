@@ -11,7 +11,7 @@ import com.debboun.reservas.servicios.HotelService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@Controller
+@Controller // Clase para controlar las acciones en la vista de hoteles
 public class HotelController {
 	
 	private final HotelService hotelService;

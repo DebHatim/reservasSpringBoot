@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor // Crear un constructor para todos los final
 
 @Service // Para que spring detecte este servicio
+// Implementación del servicio de administrador
 public class AdminServiceImplementacion implements AdminService {
 
 	private final UsuarioRepository usuarioRepository;

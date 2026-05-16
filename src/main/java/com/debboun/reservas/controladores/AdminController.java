@@ -22,25 +22,25 @@ public class AdminController {
 
 	private final AdminService adminService;
 
-	@GetMapping({"","/"})
+	@GetMapping({"","/"}) // Método para mostrar el panel de admin
 	public String mostrar() {
 		return "admin";
 	}
 	
-	@GetMapping({"/usuarios","/usuarios/"})
+	@GetMapping({"/usuarios","/usuarios/"}) // Método para mostrar la lista de usuarios en el sistema
 	public String listarUsuarios(Model modelo) {
 		modelo.addAttribute("usuarios", adminService.listarUsuarios());
 		return "usuarios";
 	}
 	
-	@GetMapping({"/hoteles","/hoteles/"})
+	@GetMapping({"/hoteles","/hoteles/"}) // Método para mostrar la lista de hoteles en el sistema
 	public String listarHoteles(Model modelo) {
 		modelo.addAttribute("hoteles", adminService.listarHoteles());
 		return "adminhoteles";
 	}
 	
-	@GetMapping({"/hoteles/crear","/hoteles/crear/"})
-	public String litarFormHotel(Model modelo) {
+	@GetMapping({"/hoteles/crear","/hoteles/crear/"}) // Método para mostrar el formulario de registro de hoteles
+	public String listarFormHotel(Model modelo) {
 		modelo.addAttribute("hotelDto", new RegistrarHotelDto("", "", ""));
 		return "registrarhotel";
 	}

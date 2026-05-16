@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+// Clase para mostrar los datos de usuario al iniciar sesion
 public class CustomUserDetailService implements UserDetailsService {
 
 	private final UsuarioRepository usuarioRepository;

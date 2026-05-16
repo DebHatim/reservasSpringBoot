@@ -19,7 +19,7 @@ import com.debboun.reservas.repositorios.PersonaRepository;
 import com.debboun.reservas.repositorios.UsuarioRepository;
 import com.debboun.reservas.repositorios.ValoracionRepository;
 
-@Component
+@Component // Clase hecha para arrancar la aplicación con datos preparados
 public class DataLoader implements CommandLineRunner {
 
 	@Autowired

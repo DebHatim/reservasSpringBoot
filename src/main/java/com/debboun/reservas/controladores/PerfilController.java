@@ -11,12 +11,12 @@ import com.debboun.reservas.servicios.UsuarioService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@Controller
+@Controller // Clase para mostrar el perfil del usuario
 public class PerfilController {
 	
 	private final UsuarioService usuarioService;
 	
-	@GetMapping("/perfil")
+	@GetMapping("/perfil") // Método para mostrar todos los datos del usuario
 	public String mostrar(Principal principal, Model modelo) {
 		if (principal == null) {
 			return "redirect:/login";

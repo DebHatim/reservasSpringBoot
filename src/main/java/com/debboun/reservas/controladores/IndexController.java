@@ -16,7 +16,7 @@ public class IndexController {
 	
 	private final HotelService hotelService;
 	
-	@GetMapping
+	@GetMapping // Método para mostrar los hoteles al entrar a la aplicación
 	public String index(Model modelo) {
 		modelo.addAttribute("hoteles", hotelService.listarHoteles());
 		return "index";

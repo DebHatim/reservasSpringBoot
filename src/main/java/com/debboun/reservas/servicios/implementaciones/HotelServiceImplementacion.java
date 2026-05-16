@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor // Crear un constructor para todos los final
 
 @Service
+// Implementación del servicio de usuarios anonimos
 public class HotelServiceImplementacion implements HotelService {
 	
 	private final HotelRepository hotelRepository;

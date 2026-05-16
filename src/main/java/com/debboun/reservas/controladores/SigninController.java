@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor // Crear un constructor para todos los final
 @Controller // Marcar como controller para que Spring lo detecte
+// Clase para controlar el registro de usuarios en la aplicacion
 public class SigninController {
 
 	private final UsuarioService usuarioService;

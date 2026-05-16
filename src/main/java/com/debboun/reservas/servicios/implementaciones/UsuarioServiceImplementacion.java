@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor // Crear un constructor para todos los final
 
 @Service
+//Implementación del servicio de usuarios
 public class UsuarioServiceImplementacion implements UsuarioService {
 	
 	private final ReservaRepository reservaRepository;
