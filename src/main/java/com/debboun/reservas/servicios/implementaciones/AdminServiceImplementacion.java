@@ -5,6 +5,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
+import com.debboun.reservas.dtos.EditarHotelDto;
 import com.debboun.reservas.dtos.EditarUsuarioDto;
 import com.debboun.reservas.dtos.RegistrarHotelDto;
 import com.debboun.reservas.dtos.UsuarioListaDto;
@@ -38,6 +39,12 @@ public class AdminServiceImplementacion implements AdminService {
 	}
 
 	@Override
+	public EditarHotelDto obtenerHotel(Long id) {
+		var h = hotelRepository.findById(id).get();
+		return new EditarHotelDto(id, h.getNombre(), h.getDireccion(), h.getFotos().get(0));
+	}
+	
+	@Override
 	public void guardarUsuario(Long id, EditarUsuarioDto usuario) {
 		var u = usuarioRepository.findById(id).get();
 		u.getPersona().setNombre(usuario.nombre());
@@ -46,6 +53,16 @@ public class AdminServiceImplementacion implements AdminService {
 		u.setEmail(usuario.email());
 		
 		usuarioRepository.save(u);
+	}
+	
+	@Override
+	public void guardarHotel(Long id, EditarHotelDto hotel) {
+		var h = hotelRepository.findById(id).get();
+		h.setNombre(hotel.nombre());
+		h.setDireccion(hotel.direccion());
+		h.getFotos().set(0, hotel.url());
+		
+		hotelRepository.save(h);
 	}
 
 	@Override
