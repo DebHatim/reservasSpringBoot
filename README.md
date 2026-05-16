@@ -13,6 +13,34 @@ Aplicación Backend robusta desarrollada con **Java 21** y **Spring Boot 3.x**. 
 
 ---
 
+## 📸 Capturas de Pantalla
+
+# Índice
+![Índice](screenshots/index.png)
+
+# Vista de hoteles
+![Vista de hoteles](screenshots/hotelview.png)
+
+# Inicio de sesión
+![Inicio de sesión](screenshots/login.png)
+
+# Registro
+![Registro](screenshots/register.png)
+
+# Perfil
+![Perfil](screenshots/profile.png)
+
+# Vista del panel del administrador
+![Vista del panel del administrador](screenshots/admin.png)
+
+# Gestión de usuarios panel del administrador
+![Gestión de usuarios panel del administrador](screenshots/admin2.png)
+
+# Registro de hoteles en el panel del administrador
+![Registro de hoteles en el panel del administrador](screenshots/admin3.png)
+
+---
+
 ## 🚀 Capacidades Técnicas e Implementación
 
 - **Gestión de Datos:** Modelado avanzado con **JPA/Hibernate** (Relaciones @OneToMany, @OneToOne) y optimización de consultas.
@@ -51,6 +79,29 @@ Aplicación Backend robusta desarrollada con **Java 21** y **Spring Boot 3.x**. 
 - **Protección:** Configuración contra ataques CSRF y SQL Injection.
 - **Manejo de contraseñas:** Hashing con `BCryptPasswordEncoder`.
 
+```java
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig  {
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder(); // Usar Bcrypt para encriptar las contraseñas
+	}
+	
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests(
+				
+				auth -> auth // Definicion de zona publica, asteriscos dobles en css y js para cubrir subcarpetas
+				.requestMatchers("/", "/signin/**", "/login**", "/hotel/**", "/perfil/**", "/css/**", "/js/**", "/favicon.ico").permitAll().anyRequest().authenticated())
+				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/",true).permitAll())
+				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+
+		return http.build();
+	}
+}
+```
 ---
 
 ## ⚙️ Configuración y Ejecución
