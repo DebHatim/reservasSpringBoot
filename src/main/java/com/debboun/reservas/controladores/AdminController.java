@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.debboun.reservas.dtos.EditarHotelDto;
 import com.debboun.reservas.dtos.EditarUsuarioDto;
 import com.debboun.reservas.dtos.RegistrarHotelDto;
 import com.debboun.reservas.servicios.AdminService;
@@ -62,6 +63,18 @@ public class AdminController {
 	public String guardarUsuario(@PathVariable Long id, @ModelAttribute("usuario") EditarUsuarioDto usuario) {
 		adminService.guardarUsuario(id, usuario);
 		return "redirect:/admin/usuarios";
+	}
+	
+	@GetMapping("/hoteles/editar/{id}")
+	public String editarHotel(@PathVariable Long id, Model modelo) {
+		modelo.addAttribute("hotel", adminService.obtenerHotel(id));
+		return "editarhotel";
+	}
+	
+	@PostMapping("/hoteles/editar/{id}")
+	public String guardarHotel(@PathVariable Long id, @ModelAttribute("hotel") EditarHotelDto hotel) {
+		adminService.guardarHotel(id, hotel);
+		return "redirect:/admin/hoteles";
 	}
 	
 	// Métodos para eliminar
