@@ -8,7 +8,7 @@
 
 API REST y aplicación web backend para la gestión integral de hoteles y reservas. Desarrollada con **Java 21**, **Spring Boot 4.0.3** y **Spring Security**, implementa autenticación basada en roles, prevención de reservas duplicadas y una arquitectura limpia orientada a la mantenibilidad y escalabilidad.
 
-> Desarrollado por **Hatim Debboun** como proyecto de portafolio técnico — calificación 10/10 en el Curso de Especialización JAVA/JEE (Ipartek, 210h).
+> Desarrollado por **Hatim Debboun** como proyecto de portafolio técnico
 
 ---
 
