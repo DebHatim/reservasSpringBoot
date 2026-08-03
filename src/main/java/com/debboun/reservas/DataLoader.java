@@ -61,12 +61,12 @@ public class DataLoader implements CommandLineRunner {
 				.save(Hotel.builder().nombre("Hotel Perseo").direccion("Direccion def 3 4").fotos(fotosHotel2).build());
 
 		// Creacion de las habitaciones para los hoteles
-		Habitacion habitacion1 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.0)).hotel(hotel1).build();
-		Habitacion habitacion2 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.00)).hotel(hotel1).build();
-		Habitacion habitacion3 = Habitacion.builder().capacidad(3).precio(new BigDecimal(18.00)).tamano(new BigDecimal(14.00)).hotel(hotel1).build();
-		Habitacion habitacion4 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.00)).hotel(hotel2).build();
-		Habitacion habitacion5 = Habitacion.builder().capacidad(4).precio(new BigDecimal(24.00)).tamano(new BigDecimal(19.00)).hotel(hotel2).build();
-		Habitacion habitacion6 = Habitacion.builder().capacidad(2).precio(new BigDecimal(12.00)).tamano(new BigDecimal(11.00)).hotel(hotel2).build();
+		Habitacion habitacion1 = Habitacion.builder().capacidad(2).precio(BigDecimal.valueOf(12.00)).tamano(BigDecimal.valueOf(11.0)).hotel(hotel1).build();
+		Habitacion habitacion2 = Habitacion.builder().capacidad(2).precio(BigDecimal.valueOf(12.00)).tamano(BigDecimal.valueOf(11.00)).hotel(hotel1).build();
+		Habitacion habitacion3 = Habitacion.builder().capacidad(3).precio(BigDecimal.valueOf(18.00)).tamano(BigDecimal.valueOf(14.00)).hotel(hotel1).build();
+		Habitacion habitacion4 = Habitacion.builder().capacidad(2).precio(BigDecimal.valueOf(12.00)).tamano(BigDecimal.valueOf(11.00)).hotel(hotel2).build();
+		Habitacion habitacion5 = Habitacion.builder().capacidad(4).precio(BigDecimal.valueOf(24.00)).tamano(BigDecimal.valueOf(19.00)).hotel(hotel2).build();
+		Habitacion habitacion6 = Habitacion.builder().capacidad(2).precio(BigDecimal.valueOf(12.00)).tamano(BigDecimal.valueOf(11.00)).hotel(hotel2).build();
 
 		habitacionRepository.saveAll(List.of(habitacion1, habitacion2, habitacion3, habitacion4, habitacion5, habitacion6));
 		
